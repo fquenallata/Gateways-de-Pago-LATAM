@@ -1,8 +1,8 @@
-const { Router } = require("express");
+import { Router } from "express";
 const router = Router();
 
-const mercadoPagoRouter = require("./mercadoPagoRouter");
+import mercadoPagoRouter from "./mercadoPagoRouter.js";
 
 router.use("/MercadoPago", mercadoPagoRouter);
 
-module.exports = router;
+export default router;

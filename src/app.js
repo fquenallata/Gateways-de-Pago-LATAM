@@ -1,11 +1,10 @@
-const express = require("express");
-const cookieParser = require("cookie-parser");
-const bodyParser = require("body-parser");
-const morgan = require("morgan");
-const routes = require("./routes/index.js");
+import bodyParser from "body-parser";
+import cookieParser from "cookie-parser";
+import express from "express";
+import morgan from "morgan";
+import routes from "./routes/index.js";
 
 const server = express();
-server.name = "API";
 
 server.use(
   bodyParser.urlencoded({
@@ -35,7 +34,7 @@ server.options("", (req, res) => {
     "Origin, X-Requested-With, Content-Type, Accept, Authorization, x-access-token"
   );
   res.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, DELETE");
-  res.sendStatus(204); // No content in the response
+  res.sendStatus(204);
 });
 
 server.use("/", routes);
@@ -47,4 +46,4 @@ server.use((err, req, res, next) => {
   res.status(status).send(message);
 });
 
-module.exports = server;
+export default server;

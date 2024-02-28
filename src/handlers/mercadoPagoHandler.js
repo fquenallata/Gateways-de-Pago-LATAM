@@ -1,12 +1,13 @@
-const { getMensaje } = require("../controllers/mercadoPagoController.js");
+import { postPreference_MP } from "../controllers/mercadoPagoController.js";
 
-const getMensajeMP = async (req, res) => {
+const postPreference = async (req, res) => {
   try {
-    const response = await getMensaje();
-    res.status(200).json(response);
+    const { title, quantity, price } = req.body;
+    const response = await postPreference_MP(title, quantity, price);
+    res.status(200).json({ id: response.id });
   } catch (error) {
     res.status(400).json({ message: error.message });
   }
 };
 
-module.exports = { getMensajeMP };
+export { postPreference };

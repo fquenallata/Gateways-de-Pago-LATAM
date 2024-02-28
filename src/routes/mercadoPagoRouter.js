@@ -1,7 +1,7 @@
-const { Router } = require("express");
+import { Router } from "express";
+import { postPreference } from "../handlers/mercadoPagoHandler.js";
+
 const mercadoPagoRouter = Router();
-const { getMensajeMP } = require("../handlers/mercadoPagoHandler");
+mercadoPagoRouter.post("/create_preference", postPreference);
 
-mercadoPagoRouter.get("/hola", getMensajeMP);
-
-module.exports = mercadoPagoRouter;
+export default mercadoPagoRouter;
